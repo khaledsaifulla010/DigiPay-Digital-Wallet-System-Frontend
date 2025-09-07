@@ -146,7 +146,7 @@ const Navbar = () => {
               </NavLink>
               <button
                 onClick={handleLogout}
-                className="rounded-xl bg-red-600 px-3 py-1.5 text-white hover:bg-red-700"
+                className="rounded-xl cursor-pointer bg-red-600 px-3 py-1.5 text-white hover:bg-red-700"
               >
                 Logout
               </button>

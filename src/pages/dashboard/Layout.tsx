@@ -291,7 +291,7 @@ const DashboardLayout = ({ role, children }: Props) => {
             <div className="px-1 grid gap-2">
               <Button
                 onClick={handleLogout}
-                className="text-white bg-red-600 w-full"
+                className="text-white bg-red-600 hover:bg-red-700 w-full cursor-pointer"
               >
                 <LogOut className="mr-2 h-4 w-4" />
                 Logout

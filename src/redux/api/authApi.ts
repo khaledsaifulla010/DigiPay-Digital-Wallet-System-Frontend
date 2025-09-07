@@ -51,8 +51,9 @@ export const authApi = baseApi.injectEndpoints({
             dispatch(setCredentials({ accessToken: token, user }));
             dispatch(baseApi.util.invalidateTags(["Wallet", "Me"]));
           }
-        } catch {//
-          }
+        } catch {
+          //
+        }
       },
     }),
 

@@ -14,7 +14,7 @@ type WithdrawPayload = {
 };
 
 type CashInPayload = {
-  senderPhone: string;
+  senderPhone: string; 
   receiverPhone: string;
   amount: number;
 };
@@ -30,11 +30,6 @@ export const walletApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getWallet: builder.query<ApiEnvelope<{ balance: number }>, void>({
       query: () => `/wallet/me`,
-      providesTags: ["Wallet"],
-      keepUnusedDataFor: 0,
-      forceRefetch() {
-        return true;
-      },
     }),
 
     transfer: builder.mutation<ApiEnvelope<any>, TransferPayload>({
@@ -43,7 +38,6 @@ export const walletApi = baseApi.injectEndpoints({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Wallet", "Me"],
     }),
 
     withdraw: builder.mutation<ApiEnvelope<any>, WithdrawPayload>({
@@ -52,7 +46,6 @@ export const walletApi = baseApi.injectEndpoints({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Wallet", "Me"],
     }),
 
     cashIn: builder.mutation<ApiEnvelope<any>, CashInPayload>({
@@ -61,7 +54,6 @@ export const walletApi = baseApi.injectEndpoints({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Wallet", "Me"],
     }),
   }),
 });
