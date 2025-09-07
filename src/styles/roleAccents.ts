@@ -1,0 +1,40 @@
+
+export const TOKEN_ACCENTS = {
+  "pink-600": {
+    ringHover: "ring-pink-500/30",
+    iconBgSoft: "bg-pink-600/10",
+    gradBar: "from-pink-500 via-fuchsia-500 to-rose-500",
+    ambientBlob: "from-pink-600/20 via-fuchsia-500/10 to-rose-500/20",
+    ambientBlob2: "from-rose-400/10 via-pink-500/10 to-fuchsia-500/10",
+    glow: "from-pink-600/10 to-rose-500/10",
+    bullet: "bg-pink-600",
+    // Outline CTA helpers
+    outlineBorder: "border-pink-200 dark:border-pink-800",
+    outlineText: "text-pink-700 dark:text-pink-300",
+    outlineHover: "hover:bg-pink-50 dark:hover:bg-pink-900/30",
+  },
+  "purple-600": {
+    ringHover: "ring-purple-500/30",
+    iconBgSoft: "bg-purple-600/10",
+    gradBar: "from-purple-500 via-fuchsia-500 to-indigo-500",
+    ambientBlob: "from-purple-600/20 via-fuchsia-500/10 to-indigo-500/20",
+    ambientBlob2: "from-indigo-400/10 via-purple-500/10 to-fuchsia-500/10",
+    glow: "from-purple-600/10 to-indigo-500/10",
+    bullet: "bg-purple-600",
+    outlineBorder: "border-purple-200 dark:border-purple-800",
+    outlineText: "text-purple-700 dark:text-purple-300",
+    outlineHover: "hover:bg-purple-50 dark:hover:bg-purple-900/30",
+  },
+  "green-600": {
+    ringHover: "ring-green-500/30",
+    iconBgSoft: "bg-green-600/10",
+    gradBar: "from-green-500 via-emerald-500 to-lime-500",
+    ambientBlob: "from-green-600/20 via-emerald-500/10 to-lime-500/20",
+    ambientBlob2: "from-lime-400/10 via-green-500/10 to-emerald-500/10",
+    glow: "from-green-600/10 to-emerald-500/10",
+    bullet: "bg-green-600",
+    outlineBorder: "border-green-200 dark:border-green-800",
+    outlineText: "text-green-700 dark:text-green-300",
+    outlineHover: "hover:bg-green-50 dark:hover:bg-green-900/30",
+  },
+} as const;
