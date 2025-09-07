@@ -1,69 +1,169 @@
-# React + TypeScript + Vite
+# 💸 DigiPay – Digital Wallet System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **DigiPay – Digital Wallet System**, a secure, modular, and role-based client application for a digital wallet system inspired by popular platforms like **bKash** and **Nagad**.  
+Built using **React.js**, **Redux Toolkit**, and **RTK Query**, this frontend empowers **Users**, **Agents**, and **Admins** to seamlessly interact with the DigiPay backend API for wallet management, transactions, and monitoring.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Live URLs
 
-## Expanding the ESLint configuration
+- **Frontend:** [https://digipay-digital-wallet-system-front.vercel.app](https://digipay-digital-wallet-system-front.vercel.app)
+- **Backend:** [https://digi-pay-digital-wallet-system-back.vercel.app](https://digi-pay-digital-wallet-system-back.vercel.app)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Project Introduction
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+The DigiPay – Digital Wallet System is built with **modern UI/UX** principles, offering role-based dashboards for **Users**, **Agents**, and **Admins**.  
+It features **JWT authentication with refresh tokens**, **real-time wallet updates**, **transaction history**, and **admin controls**, ensuring a smooth and secure financial experience.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🧭 Project Overview
+
+- **Users** can register, log in, manage their wallet, transfer or withdraw funds, and view transaction history.
+- **Agents** can perform cash-in/cash-out operations and track commission stats.
+- **Admins** can monitor all wallets, transactions, and users with full control over account statuses.
+
+The app uses **RTK Query** for efficient API data fetching, **Redux Toolkit** for state management, and **React Router** for role-based navigation.
+
+---
+
+## ✨ Features
+
+### Authentication & Authorization
+
+- Secure login and registration with JWT-based tokens.
+- Automatic token refresh on expiration.
+- Role-based route protection for **Admin**, **Agent**, and **User**.
+
+### User Features
+
+- Register, update profile, and view wallet balance.
+- Withdraw, transfer, and view transaction history.
+
+### Agent Features
+
+- Perform **cash-in** and **cash-out** operations.
+- Access commission history and statistics.
+
+### Admin Features
+
+- View all users, wallets, and transactions.
+- Block/unblock users and wallets.
+- Manage agent statuses and oversee all activities.
+
+### General Features
+
+- Modern responsive UI built with TailwindCSS.
+- Toast notifications for actions and errors.
+- Recharts integration for transaction and commission visualizations.
+
+---
+
+## 🖥️ Frontend API Endpoints
+
+All frontend API calls are routed via **RTK Query** with base URL:
+
+### 🔐 Auth
+
+| Method | Endpoint            | Description                 |
+| ------ | ------------------- | --------------------------- |
+| POST   | /auth/login         | Login with email & password |
+| POST   | /auth/register      | Register as User/Agent      |
+| POST   | /auth/refresh-token | Refresh JWT token           |
+| POST   | /auth/logout        | Logout and clear session    |
+
+### 👤 User
+
+| Method | Endpoint        | Description                 |
+| ------ | --------------- | --------------------------- |
+| GET    | /user/me        | Get logged-in user info     |
+| PATCH  | /user/me        | Update logged-in profile    |
+| GET    | /user/all-users | [Admin] Get all users       |
+| GET    | /user/:id       | [Admin] Get user by ID      |
+| PATCH  | /user/:id       | [Admin] Change agent status |
+
+### 🏦 Wallet
+
+| Method | Endpoint            | Description                      |
+| ------ | ------------------- | -------------------------------- |
+| GET    | /wallet/me          | Get logged-in user’s wallet      |
+| POST   | /wallet/withdraw    | Withdraw money                   |
+| POST   | /wallet/transfer    | Transfer money to another user   |
+| POST   | /wallet/cashIn      | [Agent] Add money to user wallet |
+| GET    | /wallet/all-wallets | [Admin] Get all wallets          |
+| PATCH  | /wallet/:id         | [Admin] Update wallet status     |
+
+### 📜 Transactions
+
+| Method | Endpoint                      | Description                        |
+| ------ | ----------------------------- | ---------------------------------- |
+| GET    | /user-transaction             | [User] Get own transaction history |
+| GET    | /transaction/all-transactions | [Admin] Get all transactions       |
+| GET    | /transaction/:id              | [Admin] Get transaction by ID      |
+
+### 💼 Agent Commission
+
+| Method | Endpoint                | Description                    |
+| ------ | ----------------------- | ------------------------------ |
+| GET    | /agent-commission       | [Agent] Get commission history |
+| GET    | /agent-commission/stats | [Agent] Get commission stats   |
+
+---
+
+## ⚙️ Backend API Table
+
+Base URL: `/api/v1`
+
+| Module           | Endpoints                                                                                                    |
+| ---------------- | ------------------------------------------------------------------------------------------------------------ |
+| Auth             | `/auth/login`, `/auth/refresh-token`, `/auth/logout`                                                         |
+| User             | `/user/register`, `/user/me`, `/user/all-users`, `/user/:id`                                                 |
+| Wallet           | `/wallet/me`, `/wallet/withdraw`, `/wallet/transfer`, `/wallet/cashIn`, `/wallet/all-wallets`, `/wallet/:id` |
+| Transactions     | `/user-transaction`, `/transaction/all-transactions`, `/transaction/:id`                                     |
+| Agent Commission | `/agent-commission`, `/agent-commission/stats`                                                               |
+
+---
+
+## 🧱 Tech Stack
+
+| Package                        | Description                   |
+| ------------------------------ | ----------------------------- |
+| `react`                        | Core React library            |
+| `react-router-dom`             | Routing and navigation        |
+| `@reduxjs/toolkit`             | State management & RTK Query  |
+| `react-redux`                  | Redux bindings for React      |
+| `react-hook-form`              | Form handling with validation |
+| `zod`                          | Schema validation library     |
+| `tailwindcss`                  | Utility-first CSS framework   |
+| `framer-motion`                | Animations & transitions      |
+| `lucide-react`                 | Icon library                  |
+| `recharts`                     | Charting library              |
+| `react-toastify`               | Toast notifications           |
+| `react-joyride`                | Guided product tours          |
+| `date-fns`                     | Date utilities                |
+| `clsx` & `tailwind-merge`      | Class merging utilities       |
+| `vite`                         | Next-gen frontend tooling     |
+| `typescript`                   | Type-safe JavaScript          |
+| `eslint` + `typescript-eslint` | Linting & code quality        |
+
+---
+
+## ⚙️ Setup Instructions
+
+Clone the project and install dependencies:
+
+```bash
+git clone https://github.com/khaledsaifulla010/digipay-digital-wallet-system-frontend.git
+cd digipay-digital-wallet-system-frontend
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+<p align="center">
+  🛠️ Developed by <strong>Khaled Saifulla</strong> with clean frontend architecture ❤️.
+</p>
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
